@@ -20,7 +20,7 @@ _start:
     Syscall
     
     xor rsi, rsi
-    mov rsi, num        
+    mov rsi, num                    ;input array   
     
     loop1:
         mov rax, 0
@@ -38,7 +38,7 @@ _start:
     mov rdx, L2
     Syscall
     
-    mov rsi, num
+    mov rsi, num              ;output array
     
     loop2:
         mov rax, 01

@@ -26,7 +26,6 @@ section .bss
 num resb 10
 ans resb 2
 
-
 section .text
 global _start
 _start:
@@ -41,14 +40,14 @@ _start:
     mov rbx, 0
     mov rax, 0
     
-    back:
+    back:                 ;ascii to hex conversion step 1
     rol rbx, 04
     mov al, [rsi]
     cmp al, 39h
     jbe next
     sub al, 07h
     
-    next:
+    next:                ;ascii to hex conversion step 2
     sub al, 30h
     add bx, ax
     inc rsi
@@ -60,7 +59,7 @@ _start:
     display:
     mov rbp, ans
     
-    up:
+    up:                    ;hex to ascii conversion step 1
     rol bl, 04
     mov dl, bl
     and dl, 0Fh
@@ -68,7 +67,7 @@ _start:
     jbe ahead
     add dl, 07h
     
-    ahead:
+    ahead:                 ;hex to ascii conversion step 2
     add dl, 30h
     mov [rbp], dl
     inc rbp
